@@ -3,20 +3,20 @@
 #include "delay.h"
 #include "usart1.h"
 #include "nRF24L01.h"
-#include<stdlib.h>   //°üº¬º¯Êýrand£¨£©ÉùÃ÷µÄÍ·ÎÄ¼þ
+#include<stdlib.h>   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½randï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½Ä¼ï¿½
 
 
 int main()
 {	
 	u8 i,sta,channel,rx_len,ack_len;	  
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4); //ÉèÖÃNVICÖÐ¶Ï·Ö×é4:  16Î»ÇÀÕ¼ÓÅÏÈ¼¶0,15×îºÃ²»ÓÃ
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4); //ï¿½ï¿½ï¿½ï¿½NVICï¿½Ð¶Ï·ï¿½ï¿½ï¿½4:  16Î»ï¿½ï¿½Õ¼ï¿½ï¿½ï¿½È¼ï¿½0,15ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
 	delay_init();
 
 	USART1_Init(115200);
 	printf("OK...\r\n\r\n\r\n");
  
 
-    NRF24L01_Init();    		//³õÊ¼»¯NRF24L01 
+    NRF24L01_Init();    		//ï¿½ï¿½Ê¼ï¿½ï¿½NRF24L01 
 
 	while(NRF24L01_Check())
 	{
@@ -33,20 +33,20 @@ int main()
 		if(sta&RX_OK)              
 		{	
 			printf("RX_OK       RX_BUF:");
-			for(i=0;i<rx_len;i++)printf("%d,",RX_BUF[i]);printf("\r\n");    //Èç¹û½ÓÊÕµ½Êý¾Ý£¬ÏÔÊ¾Êý¾Ý
+			for(i=0;i<rx_len;i++)printf("%d,",RX_BUF[i]);printf("\r\n");    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
  
-			//Ò²¿ÉÒÔËæÊ±Ìî³äACKÊý¾ÝÊÕµ½Ö±½Ó¾Í·µ»ØÁË£¬²»ÓÃµÈÊÕµ½Êý¾ÝÌî³ä£¬ÏÂ´Î·µ»ØÁË
-			ack_len=10;                                                     //¶¨ÒåackÊý¾Ý³¤¶ÈÎª10
+			//Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ACKï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½Ö±ï¿½Ó¾Í·ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä£¬ï¿½Â´Î·ï¿½ï¿½ï¿½ï¿½ï¿½
+			ack_len=10;                                                     //ï¿½ï¿½ï¿½ï¿½ackï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½Îª10
 			for(i=0;i<ack_len;i++)
 				TX_BUF[i]=RX_BUF[i];
-			TX_BUF[ack_len-1]=rand()%10;//¸³ÖµackÊý¾Ý£¬Ç°9¸öÊÇ½ÓÊÕµÄÊý¾Ý£¬×îºóÒ»¸öËæ»ú
+			TX_BUF[ack_len-1]=rand()%10;//ï¿½ï¿½Öµackï¿½ï¿½ï¿½Ý£ï¿½Ç°9ï¿½ï¿½ï¿½Ç½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½
 				
-			printf("TX_ACK_BUF  TX_BUF:");                                  //ÏÔÊ¾Ò»ÏÂ
+			printf("TX_ACK_BUF  TX_BUF:");                                  //ï¿½ï¿½Ê¾Ò»ï¿½ï¿½
 			for(i=0;i<ack_len;i++)
 				printf("%d,",TX_BUF[i]);
 			printf("\r\n");
 			printf("\r\n");	
-			NRF24L01_PacketAckData(TX_BUF,ack_len);//ËÍÈëACK·¢ËÍ»º´æ
+			NRF24L01_PacketAckData(TX_BUF,ack_len);//ï¿½ï¿½ï¿½ï¿½ACKï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½
 		}
 	}
 }
