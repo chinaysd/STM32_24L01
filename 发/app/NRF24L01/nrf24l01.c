@@ -49,7 +49,7 @@ void NRF24L01_IO_Init(void)
 	NRF24L01_SPIx_SetSpeed(SPI_BaudRatePrescaler_8); //spi速度为9Mhz（24L01的最大SPI时钟为10Mhz）
 
 	NRF24L01_CE = 0;	//使能24L01
-	NRF24L01_CSN = 1; //SPI片选取消
+	NRF24L01_CSN = 1; //SPI片选取消 
 }
 
 //检测24L01是否存在

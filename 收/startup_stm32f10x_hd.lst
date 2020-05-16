@@ -568,7 +568,7 @@ ork --depend=.\output\startup_stm32f10x_hd.d -o.\output\startup_stm32f10x_hd.o
 -I.\RTE\_moban -IE:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0
 \CMSIS\Core\Include -IE:\Users\Administrator\AppData\Local\Arm\Packs\Keil\STM32
 F1xx_DFP\2.3.0\Device\Include --predefine="__UVISION_VERSION SETA 529" --predef
-ine="_RTE_ SETA 1" --predefine="STM32F10X_HD SETA 1" --list=.\startup_stm32f10x
+ine="_RTE_ SETA 1" --predefine="STM32F10X_CL SETA 1" --list=.\startup_stm32f10x
 _hd.lst startup\startup_stm32f10x_hd.s
 
 
